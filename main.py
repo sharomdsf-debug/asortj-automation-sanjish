@@ -1,12 +1,23 @@
 import os
 import asyncio
 from fastapi import FastAPI, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
 from google import genai
 from google.genai import types
 
 app = FastAPI()
 
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyApPuYT4dG8FInQm8d8Y119tw9la5F2XzU")
+# Иҷозат додани пайвастшавӣ аз телефон ва браузерҳо
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Калиди API мустақиман дар код гузошта шуд, то хатогӣ нашавад
+GEMINI_API_KEY = "AIzaSyApPuYT4dG8FInQm8d8Y119tw9la5F2XzU"
 client = genai.Client(api_key=GEMINI_API_KEY, http_options={"api_version": "v1beta"})
 
 @app.websocket("/ws/voice")
