@@ -6,7 +6,7 @@ from google import genai
 from google.genai import types
 
 # API Key-и ройгони худро дар ин ҷо гузоред
-API_KEY = "AIzaSyB3_ИНҶО_КАЛИДИ_ХУДРО_ПЕЙСТ_КУНЕД"
+API_KEY = "AIzaSyApPuYT4dG8FInQm8d8Y119tw9la5F2XzU"
 client = genai.Client(api_key=API_KEY)
 
 async def gemini_session_handler(client_ws, path):
